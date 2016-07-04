@@ -14,11 +14,11 @@ module Outsoft
       #  * :label String with name of parameter, which will displayed to user
       #  * :company_id Company identifier in
       #
-      def add(name:, value_type:, value:, label:, company_id: 1)
+      def add(name:, value_type:, label:, value:nil, company_id: 1)
         # Value must be [] if group or ref created (in this case method will ignore :value)
         inserted_value = value
         if %w(ref group).include? value_type
-          inserted_value = {} unless value.present?
+          inserted_value = {}
           raise 'Value must be a Hash' unless inserted_value == {}
         end
 
@@ -40,7 +40,7 @@ module Outsoft
       #     for groups and ref it woill ignored)
       #  * :label String with name of parameter, which will displayed to user
       #
-      def add_by_path(path:, name:, value_type:, value:, label:)
+      def add_by_path(path:, name:, value_type:, label:, value:nil)
         # Value must be [] if group or ref created (in this case method will ignore :value)
         inserted_value = value
         inserted_value = {} if %w(ref group).include? value_type
