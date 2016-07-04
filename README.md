@@ -49,7 +49,7 @@ Outsoft::Params.remove path: 'my_new_group.my_new_nested_value'
 All methods for work with clients here `lib/outsoft/clients.rb`. 
 It has method `create`, to create client:
 ```
-Outsoft::Params.add name: 'new_goup', value_type: 'group', label: 'My new group'
+Outsoft::Params.add name: 'new_group', value_type: 'group', label: 'My new group'
 Outsoft::Params.add_by_path path: 'new_group', name: 'new_param', value_type: 'int', label: 'Some param', value: 10
 Outsoft::Clients.create data: { id: 1 }
 Outsoft::Clients.create data: { id: 2, extra: [['exists_param', 'some value']] }
