@@ -57,7 +57,7 @@ Outsoft::Clients.create data: { id: 2, extra: [['exists_param', 'some value']] }
 
 To update clients:
 ```
-Outsoft::Clients.update id: 1, predefined: [{'path' => 'new_goup.new_param', 'value' => 11}], extra: [['Cat`s count', '1'] ,['Car model', 'Ford']]
+Outsoft::Clients.update id: 1, predefined: [{'path' => 'new_group.new_param', 'value' => 11}], extra: [['Cat`s count', '1'] ,['Car model', 'Ford']]
 
 ```
 

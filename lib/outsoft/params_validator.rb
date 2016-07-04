@@ -109,7 +109,7 @@ module Outsoft
     end
 
     def check_string(path, key, value, errors, _options = nil)
-      unless value.is_a?(String) && value.size > 1 && value.size < 255
+      unless value.is_a?(String) && value.size >= 1 && value.size < 255
         errors[key] = "in #{path} #{key} must be String with length 1...255"
         return false
       end
