@@ -17,12 +17,16 @@ namespace :db do
     current_params = current_params.delete_if { |i| i.env_only.present? && i.env_only != to }
     ActiveRecord::Base.establish_connection(to.to_sym)
     current_params.each do |i|
-      Outsoft::Param.create!(
-        company_id: i.company_id,
-        name: i.name,
-        data: i.data,
-        env_only: i.env_only
-      )
+      begin
+        Outsoft::Param.create!(
+          company_id: i.company_id,
+          name: i.name,
+          data: i.data,
+          env_only: i.env_only
+        )
+      rescue Exception => e
+        p "Can\'t export value, because it has excepiton #{e.message}"
+      end
     end
   end
 
@@ -34,12 +38,16 @@ namespace :db do
     current_params = current_params.delete_if { |i| i.env_only.present? && i.env_only != $env }
     ActiveRecord::Base.establish_connection($env.to_sym)
     current_params.each do |i|
-      Outsoft::Param.create!(
-        company_id: i.company_id,
-        name: i.name,
-        data: i.data,
-        env_only: i.env_only
-      )
+      begin
+        Outsoft::Param.create!(
+          company_id: i.company_id,
+          name: i.name,
+          data: i.data,
+          env_only: i.env_only
+        )
+      rescue Exception => e
+        p "Can\'t import value, because it has excepiton #{e.message}"
+      end
     end
   end
 
