@@ -1,4 +1,4 @@
-$env = ENV['OUTSOFT_ENV'] || :development
+$env = (ENV['OUTSOFT_ENV']|| :development).to_sym
 
 db_path = File.join(File.dirname(__FILE__), '../', 'config', 'database.yml')
 $db_config = YAML::load(File.open(db_path))
